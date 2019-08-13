@@ -1,37 +1,38 @@
+print('Своя игра')
 gamer = {'name': input('Как вас зовут?\n'),
          'age': int(input('Сколько тебе лет?\n')),
-         'sex': '',
-         'pet_name': '',
+         'sex': input('Какого ты пола?\n'),
+         'pet_name': input('Как зовут твоего питомца?\n'),
+         'love_games': input('Любишь ли ты играть?\n'),
          }
 
+question2 = ''
+
 if gamer['age'] < 18:
-    if gamer['name'] == 'Вася':
-        print(gamer['name'], 'тубу нельзя играть, потому что ты Вася и молодой')
+    print('Тебе нет 18 лет, тебе нельзя играть')
+
+elif gamer['age'] > 90:
+    question1 = input('Игра может быть сильно утомительной для вас.\nУверены ли, вы, что хотите играть?\n')
+
+    if question1 == 'Да':
+        question2 = input('Точно?\n')
+
+        if question2 == 'Да':
+            print('Хорошо, тогда начнём игру!')
+
+        else:
+            print('До свидания,', gamer['name'])
+
     else:
-        print('Тебе нельзя играть')
-elif gamer['name'] == 'Петя':
-    print('Ты плохой')
-else:
-    print('Добро пожаловать в Игру')
+        print('До свидания,', gamer['name'])
 
-print('Я могу сосчитать твой возраст')
+if 18 <= gamer['age'] <= 90 or question2 == 'Да':
+    print('Привет,', gamer['name'], '\nЯ могу назвать буквы алфавита, которых нет в твоем имени.')
+    char = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
+    for i in gamer['name']:
+        if i in char:
+            char = char.replace(i, '')
 
-i = 0
-while i <= gamer['age']:
+print('В твоём имени нет букв:')
+for i in char:
     print(i)
-    i += 1
-
-    if i > 22:
-        print('замучился считать')
-        break
-else:
-    print('Сработал else в цикле')
-
-print('А еще я могу произнести имя по буквам')
-
-i = 0
-for char in gamer['name']:
-    i += 1
-    if i == 3:
-        continue
-    print(char)
